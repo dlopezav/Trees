@@ -157,11 +157,13 @@ public class BinarySearchTree<T extends Comparable <? super T>> {
         }
     }
 
-    public T getRoot() {
+    public T getRootEle() {
         return root.element;
     }
 
-     
+    public BinaryNode<T>  getRoot(){
+        return root;
+    }
 
     
     };

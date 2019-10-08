@@ -22,8 +22,9 @@ public class Tree {
         enteros.insert(4);
         enteros.insert(3);
         enteros.insert(7);
-        enteros.print();
-        System.out.println(enteros.findMax());
+        //enteros.print();
+        enteros.printTreePOST(enteros.getRoot());
+        System.out.println(enteros.findMin());
     }
     
 }
