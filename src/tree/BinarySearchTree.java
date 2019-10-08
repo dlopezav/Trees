@@ -23,6 +23,7 @@ public class BinarySearchTree<T extends Comparable <? super T>> {
             this.left = left;
             this.right = right;
         }
+        
     }
 
     private BinaryNode<T> root;
@@ -39,7 +40,7 @@ public class BinarySearchTree<T extends Comparable <? super T>> {
         root = insert(x, root);
     }
 
-    public BinaryNode<T> insert(T x, BinaryNode<T> t) {
+    private BinaryNode<T> insert(T x, BinaryNode<T> t) {
         if(t == null){
             return new BinaryNode<T>(x,null,null);
         }
@@ -54,7 +55,13 @@ public class BinarySearchTree<T extends Comparable <? super T>> {
         return t;
     }
 
-
+    public T findMin(){
+        return findMin(root).element;
+    }
+    public T findMax(){
+        return findMax(root).element;
+    }
+    
     public BinaryNode<T> findMin(BinaryNode<T> t) {
         if (t == null) // exception!
         {
@@ -98,18 +105,20 @@ public class BinarySearchTree<T extends Comparable <? super T>> {
            return root == null;
     }
 
-    
+     public void remove(T x) {
+        root = remove(x, root);
+    }
 
-    public BinaryNode<T> remove(T x, BinaryNode<T> t) {
+    private BinaryNode<T> remove(T x, BinaryNode<T> t) {
             if (t == null) // exception!
             {
                 return null;
             }
             int compare = x.compareTo(t.element);
             if (compare <0){
-                return remove(x, t.left);
+                t.left = remove(x, t.left);
             }else if(compare >0){
-                return remove(x, t.right);
+                t.right = remove(x, t.right);
             }else if  (t.left != null && t.right != null){
                 t.element = findMin(t.right).element;
                 t.right = remove (t.element, t.right);
@@ -123,7 +132,9 @@ public class BinarySearchTree<T extends Comparable <? super T>> {
             return t;
     }
 
-
+    public void print(){
+        printTreePRE(root);
+    }
     public void printTreePRE(BinaryNode<T> t){
         if(t != null){
             System.out.println(t.element);
@@ -146,14 +157,11 @@ public class BinarySearchTree<T extends Comparable <? super T>> {
         }
     }
 
-    public BinaryNode<T> getRoot() {
-        return root;
+    public T getRoot() {
+        return root.element;
     }
 
-    public void setRoot(BinaryNode<T> root) {
-        this.root = root;
-    }
-        
+     
 
     
     };

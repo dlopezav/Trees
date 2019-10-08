@@ -16,10 +16,14 @@ public class Tree {
      */
     public static void main(String[] args) {
         BinarySearchTree<Integer> enteros = new BinarySearchTree();
-        for( int i=0; i< 20; i++){
-        enteros.insert(i);
-        }
-        enteros.printTreePOST(enteros.getRoot());
+        enteros.insert(8);
+        enteros.insert(9);
+        enteros.insert(12);
+        enteros.insert(4);
+        enteros.insert(3);
+        enteros.insert(7);
+        enteros.print();
+        System.out.println(enteros.findMax());
     }
     
 }
